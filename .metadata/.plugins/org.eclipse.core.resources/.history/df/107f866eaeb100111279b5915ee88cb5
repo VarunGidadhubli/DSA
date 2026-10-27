@@ -1,0 +1,13 @@
+package datastructures.code.arrays;
+
+public class Sort0s1s2s {
+
+	public static void main(String[] args) {
+
+		int[] arr = {
+			    2, 0, 1, 2, 1, 0, 2, 0, 1, 1,
+			    2, 0, 0, 1, 2, 1, 0, 2, 1, 0,
+			    2, 1, 0, 2, 0, 1, 1, 2, 0, 2
+			};
+	}
+}

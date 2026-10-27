@@ -1,0 +1,6 @@
+package datastructures.code.arrays;
+
+public class AgeInvalidException extends Exception{
+
+	
+}

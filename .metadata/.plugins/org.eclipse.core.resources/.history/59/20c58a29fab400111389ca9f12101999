@@ -1,0 +1,13 @@
+package datastructures.code.arrays;
+
+public class Exc {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		if(3>2) {
+			throw new ArithmeticException();
+		}
+	}
+
+}

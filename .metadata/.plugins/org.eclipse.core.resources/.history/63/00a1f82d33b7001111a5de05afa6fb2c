@@ -1,0 +1,46 @@
+package datastructures.code.json;
+
+public class JsonParsing {
+
+    public static void main(String[] args) throws Exception {
+
+        String json = """
+                {
+                  "id": 101,
+                  "name": "John",
+                  "email": "john@example.com",
+                  "active": true,
+                  "address": {
+                    "city": "Hyderabad",
+                    "country": "India",
+                    "pincode": 500081
+                  },
+                  "skills": [
+                    "Java",
+                    "Spring Boot",
+                    "Selenium"
+                  ],
+                  "projects": [
+                    {
+                      "name": "Order Management",
+                      "experience": 3
+                    },
+                    {
+                      "name": "Payment Gateway",
+                      "experience": 2
+                    }
+                  ]
+                }
+                """;
+
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        JsonNode rootNode = objectMapper.readTree(json);
+
+        // Start parsing here
+        System.out.println(rootNode.get("id").asInt());
+        System.out.println(rootNode.get("name").asText());
+        System.out.println(rootNode.get("email").asText());
+        System.out.println(rootNode.get("active").asBoolean());
+    }
+}
