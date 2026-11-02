@@ -2,102 +2,101 @@ package datastructures.code.linkedlist;
 
 public class DetectCycle {
 
-    Node head;
+	Node head;
 
-    class Node {
-        int data;
-        Node next;
-        boolean isVisited=false;
+	class Node {
+		int data;
+		Node next;
+		boolean isVisited = false;
 
-        Node(int value) {
-            data = value;
-        }
-    }
+		Node(int value) {
+			data = value;
+		}
+	}
 
-    public void insert(Integer value) {
+	public void insert(Integer value) {
 
-        Node node = new Node(value);
+		Node node = new Node(value);
 
-        if (head == null) {
-            head = node;
-        } else {
+		if (head == null) {
+			head = node;
+		} else {
 
-            Node current = head;
+			Node current = head;
 
-            while (current.next != null) {
-                current = current.next;
-            }
+			while (current.next != null) {
+				current = current.next;
+			}
 
-            current.next = node;
-        }
-    }
+			current.next = node;
+		}
+	}
 
-    public void createCycle() {
+	public void createCycle() {
 
-        Node current = head;
+		Node current = head;
 
-        // Cycle should start at node 30
-        Node cycleStart = head.next.next;
+		// Cycle should start at node 30
+		Node cycleStart = head.next.next;
 
-        // Go to the last node
-        while (current.next != null) {
-            current = current.next;
-        }
+		// Go to the last node
+		while (current.next != null) {
+			current = current.next;
+		}
 
-        // Make the last node point back to 30
-        current.next = cycleStart;
-    }
-    
-    public boolean checkIfCycleExists() {
-    	
-    	Node current=head;
-    	
-    	while(current!=null) {
-    		
-    		if(current.isVisited==false) {
-    			current.isVisited=true;
-    			current=current.next;
-    		}else {
-    			System.out.println("Cycle detected");
-    			return true;
-    		}
-    	}
-    	
-    	return false;
-    }
-    
-    public boolean checkIfCycleExistsUsingSlowAndFastPointers() {
+		current.next = cycleStart;
+	}
 
-        Node slow = head;
-        Node fast = head;
+	public boolean checkIfCycleExists() {
 
-        while (fast != null && fast.next != null) {
+		Node current = head;
 
-            slow = slow.next;
-            fast = fast.next.next;
+		while (current != null) {
 
-            if (slow == fast) {
-                return true;
-            }
-        }
+			if (current.isVisited == false) {
+				current.isVisited = true;
+				current = current.next;
+			} else {
+				System.out.println("Cycle detected");
+				return true;
+			}
+		}
 
-        return false;
-    }
+		return false;
+	}
 
-    public static void main(String[] args) {
+	public boolean checkIfCycleExistsUsingSlowAndFastPointers() {
 
-        DetectCycle list = new DetectCycle();
+		Node slow = head;
+		Node fast = head;
 
-        list.insert(10);
-        list.insert(20);
-        list.insert(30);
-        list.insert(40);
-        list.insert(50);
+		while (fast != null && fast.next != null) {
 
-        list.createCycle();
-        
-        System.out.println(list.checkIfCycleExists());
-        System.out.println(list.checkIfCycleExistsUsingSlowAndFastPointers());
+			slow = slow.next;
+			fast = fast.next.next;
 
-    }
+			if (slow == fast) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	public static void main(String[] args) {
+
+		DetectCycle list = new DetectCycle();
+
+		list.insert(10);
+		list.insert(20);
+		list.insert(30);
+		list.insert(40);
+		list.insert(50);
+
+		list.createCycle();
+
+		System.out.println(list.checkIfCycleExists());
+		System.out.println(list.checkIfCycleExistsUsingSlowAndFastPointers());
+
+	}
 }
