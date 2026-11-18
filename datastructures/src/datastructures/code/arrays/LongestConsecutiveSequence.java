@@ -4,34 +4,34 @@ import java.util.HashSet;
 
 public class LongestConsecutiveSequence {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		int arr[]= {0,3,2,5,4,6,1,1};
-		int maxSequence=1;
+        int arr[] = {0, 3, 2, 5, 4, 6, 1, 1};
 
-		HashSet<Integer> set=new HashSet<Integer>();
+        int maxSequence = 0;
 
-		for(int i=0;i<arr.length;i++) {
-			set.add(arr[i]);
-		}
+        HashSet<Integer> set = new HashSet<>();
 
-		for(int i=0;i<arr.length;i++) {
+        for (int num : arr) {
+            set.add(num);
+        }
 
-			if(!set.contains(arr[i]-1)) {
+        for (int num : set) {
 
-				int counter=1;
-				int currentBegin=arr[i];
+            if (!set.contains(num - 1)) {
 
-				while(set.contains(currentBegin+1)) {
-					++counter;
-					++currentBegin;
-				}
+                int counter = 1;
+                int currentBegin = num;
 
-				maxSequence=Math.max(maxSequence, counter);
-			}
+                while (set.contains(currentBegin + 1)) {
+                    counter++;
+                    currentBegin++;
+                }
 
-		}
+                maxSequence = Math.max(maxSequence, counter);
+            }
+        }
 
-		System.out.println(maxSequence);
-	}
+        System.out.println(maxSequence);
+    }
 }
